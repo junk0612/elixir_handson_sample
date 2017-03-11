@@ -23,7 +23,8 @@ defmodule Sample.Application do
 
   def start_cowboy do
     routes = [
-      {"/", Sample.HelloHandler, []}
+      {"/", Sample.HelloHandler, []},
+      {"/static/[...]", :cowboy_static, {:priv_dir, :sample, "static_files"}}
     ]
     dispatch = :cowboy_router.compile([{:_, routes}])
     opts = [{:port, 4001}]
