@@ -24,6 +24,7 @@ defmodule Sample.Application do
   def start_cowboy do
     routes = [
       {"/", Sample.HelloHandler, []},
+      {"/greet/:name", Sample.GreetHandler, []},
       {"/static/[...]", :cowboy_static, {:priv_dir, :sample, "static_files"}}
     ]
     dispatch = :cowboy_router.compile([{:_, routes}])
